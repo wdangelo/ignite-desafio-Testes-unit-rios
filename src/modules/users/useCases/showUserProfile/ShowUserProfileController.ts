@@ -14,6 +14,6 @@ export class ShowUserProfileController {
 
     const profileDTO = ProfileMap.toDTO(user);
 
-    return response.json(profileDTO);
+    return response.status(201).json(profileDTO);
   }
 }

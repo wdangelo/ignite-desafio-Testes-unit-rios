@@ -34,19 +34,15 @@ describe("Show User Profile", () => {
 
 
         const responseToken = await request(app).post("/api/v1/sessions").send({
-            email: "admin@admin.com.br'",
+            email: "admin@admin.com.br",
             password: "admin",
         });
-
-        console.log(responseToken.body)
 
         const { token } = responseToken.body;
 
         const response = await request(app).get("/api/v1/profile").send().set({
             Authorization: `Bearer ${token}`,
-        })
-
-        console.log(response.body)
+        });
         
         expect(response.status).toBe(201);
     });
