@@ -17,7 +17,7 @@ describe("Authenticate User Controller", () => {
 
         await connection.query(
             `INSERT INTO USERS(id, name, email, password, created_at, updated_at)
-              values('${id}', 'admin', 'wil@test.com.br', '${password}', 'now()', 'now()')
+              values('${id}', 'admintest', 'testwil@test.com.br', '${password}', 'now()', 'now()')
             `
           );
     });
@@ -30,8 +30,8 @@ describe("Authenticate User Controller", () => {
     it("should be able to create session", async () => {
         
         const response = await request(app).post("/api/v1/sessions").send({
-            name: "admin",
-            email: "wil@test.com.br",
+            name: "admintest",
+            email: "testwil@test.com.br",
             password: "admin",
         })
 
@@ -41,8 +41,8 @@ describe("Authenticate User Controller", () => {
 
     it("should not be able to authenticate with wrong password", async () => {
         const response = await request(app).post("/api/v1/sessions").send({
-            name: "admin",
-            email: "wil@test.com.br",
+            name: "admintest",
+            email: "testwil@test.com.br",
             password: "pass-error",
         });
         expect(response.status).toBe(401)

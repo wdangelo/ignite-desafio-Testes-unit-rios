@@ -1,7 +1,6 @@
 import { Connection } from "typeorm/connection/Connection"
 import request  from "supertest";
 import creatConnection from "../../../../database"
-import { hash } from "bcryptjs";
 
 import { app } from "../../../../app";
 
@@ -20,11 +19,11 @@ describe("Create User Controller", () => {
     });
 
     it("should be able to create an user", async () => {
-        const password = await hash("admin", 8)
+
         const response = await request(app).post("/api/v1/users/").send({
             name: "test",
             email: "wil@test.com.br",
-            password: password,
+            password: "a1b2c3",
         })
 
         expect(response.status).toBe(201);

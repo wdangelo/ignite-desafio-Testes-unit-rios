@@ -20,9 +20,9 @@ describe("Authenticate User",  () => {
 
     it("should be able to authenticate an user", async () => {
         const user: ICreateUserDTO = {
-            email: "user@teste.com",
+            email: "testuser@teste.com",
             password: "1234",
-            name: "User Test",
+            name: "New User Test",
         };
 
 
