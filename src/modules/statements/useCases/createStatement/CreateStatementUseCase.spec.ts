@@ -2,7 +2,7 @@ import { InMemoryUsersRepository } from "../../../users/repositories/in-memory/I
 
 import { CreateUserUseCase } from "../../../users/useCases/createUser/CreateUserUseCase";
 import { CreateStatementUseCase } from "./CreateStatementUseCase";
-import { InMemoryStatementsRepository } from "../../../statements/repositories/in-memory/InMemoryStatementsRepository";
+import { InMemoryStatementsRepository } from "../../repositories/in-memory/InMemoryStatementsRepository";
 import { ICreateUserDTO } from "../../../users/useCases/createUser/ICreateUserDTO";
 import { OperationType, Statement } from "../../entities/Statement";
 import { ICreateStatementDTO } from "./ICreateStatementDTO";
