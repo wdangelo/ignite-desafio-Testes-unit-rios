@@ -12,7 +12,6 @@ describe("Get Balance Controller", () => {
         connection = await creatConnection();
         await connection.runMigrations();
 
-
         const id = uuidV4();
         const password = await hash("admin", 8);
     
@@ -21,9 +20,7 @@ describe("Get Balance Controller", () => {
               values('${id}', 'admin', 'admin@admin.com.br', '${password}','now()', 'now()')
             `
           );
-
     });
-
 
     afterAll(async () => {
         await connection.dropDatabase();
@@ -31,8 +28,6 @@ describe("Get Balance Controller", () => {
     });
 
     it("should be able to get balance", async () => {
-
-
         const responseToken = await request(app).post("/api/v1/sessions").send({
             email: "admin@admin.com.br",
             password: "admin",
@@ -45,13 +40,11 @@ describe("Get Balance Controller", () => {
             description: "deposit test",
         }).set({
             Authorization: `Bearer ${token}`,
-        })
+        });
 
         const response = await request(app).get("/api/v1/statements/balance").set({
             Authorization: `Bearer ${token}`,
         });
-
-
         expect(response.status).toBe(200);
         expect(response.body.statement[0]).toHaveProperty("id")
         expect(response.body).toHaveProperty("balance")
